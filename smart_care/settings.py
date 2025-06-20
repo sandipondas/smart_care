@@ -153,10 +153,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5500",
-    "http://192.168.1.100:5500",
-    "https://smart-care-mrwx.onrender.com",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5500",
+#     "http://192.168.1.100:5500",
+#     "https://smart-care-mrwx.onrender.com",
+# ]
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
