@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]  # Allow all hosts for development; change in production
 CSRF_TRUSTED_ORIGINS = ['https://smart-care-mrwx.onrender.com','https://*.127.0.0.1']
-CORS_ALLOW_ALL_ORIGINS = True # new
+
 
 
 # Application definition
@@ -152,3 +152,11 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5500",
+    "http://192.168.1.100:5500",
+    "https://smart-care-mrwx.onrender.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
