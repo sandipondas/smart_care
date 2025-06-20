@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]  # Allow all hosts for development; change in production
 CSRF_TRUSTED_ORIGINS = ['https://smart-care-mrwx.onrender.com','https://*.127.0.0.1']
+CORS_ALLOW_ALL_ORIGINS = True # new
 
 
 # Application definition
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'patient',
     'service',
     'contact_us',
+    'corsheaders',# new
 ]
 
 MIDDLEWARE = [
@@ -58,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',#new
+    'django.middleware.common.CommonMiddleware',#new
 ]
 
 ROOT_URLCONF = 'smart_care.urls'
