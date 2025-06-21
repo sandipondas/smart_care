@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'service',
     'contact_us',
     'corsheaders',# new
+    'django_filters',
 ]
 
 MIDDLEWARE = [

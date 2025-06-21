@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from . import models
 from . import serializers
 from rest_framework.views import APIView
@@ -22,6 +23,18 @@ class PatientViewset(viewsets.ModelViewSet):
     queryset = models.Patient.objects.all()
     serializer_class = serializers.PatientSerializer
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        username = self.request.query_params.get('username')
+        user_id = self.request.query_params.get('user_id')
+
+        if username:
+            queryset = queryset.filter(user__username__icontains=username)  # Case-insensitive search
+        if user_id:
+            queryset = queryset.filter(user__id=user_id)  # Exact match
+        return queryset
+    
+    
 class UserRegistrationApiView(APIView):
     serializer_class = serializers.RegistrationSerializer
     
