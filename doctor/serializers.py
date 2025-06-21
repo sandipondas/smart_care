@@ -2,7 +2,7 @@ from rest_framework import serializers
 from . import models
 
 class DoctorSerializer(serializers.ModelSerializer):
-    # user = serializers.StringRelatedField(many=False)
+    user = serializers.StringRelatedField(many=False)
     # specialization = serializers.StringRelatedField(many=True)
     # designation = serializers.StringRelatedField(many=True)
     # available_time = serializers.StringRelatedField(many=True)
