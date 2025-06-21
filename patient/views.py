@@ -25,14 +25,13 @@ class PatientViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        username = self.request.query_params.get('username')
-        user_id = self.request.query_params.get('user_id')
+        user_id = self.request.query_params.get('user_id')  # expects ?user_id=6
 
-        if username:
-            queryset = queryset.filter(user__username__icontains=username)  # Case-insensitive search
         if user_id:
-            queryset = queryset.filter(user__id=user_id)  # Exact match
+            queryset = queryset.filter(user_id=user_id)
+
         return queryset
+
     
     
 class UserRegistrationApiView(APIView):
@@ -103,3 +102,4 @@ class UserLogoutView(APIView):
             pass  # Token does not exist, nothing to delete
         logout(request)
         return redirect('login')
+

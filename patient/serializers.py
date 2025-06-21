@@ -3,7 +3,9 @@ from . import models
 from django.contrib.auth.models import User
 
 class PatientSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(many=False)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+
     class Meta:
         model = models.Patient
         fields = '__all__'

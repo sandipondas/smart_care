@@ -7,6 +7,9 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.permissions import BasePermission
 from rest_framework.decorators import action # add this new
 from rest_framework.response import Response # add this new
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
+
 
 
 class SpecializationViewset(viewsets.ModelViewSet):
@@ -68,3 +71,7 @@ class ReviewViewset(viewsets.ModelViewSet):
         reviews = models.Review.objects.filter(doctor_id=doctor_id)
         serializer = self.get_serializer(reviews, many=True)
         return Response(serializer.data)
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

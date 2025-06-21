@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from . import models
+from django.contrib.auth.models import User
 
 class DoctorSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(many=False)
@@ -39,3 +40,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     
     def get_doctor(self, obj):
         return f"{obj.doctor.user.first_name} {obj.doctor.user.last_name}"
+    
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'first_name', 'last_name']
