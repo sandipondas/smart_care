@@ -24,7 +24,18 @@ class AvailableTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.AvailableTime
         fields = '__all__'
+
+        
 class ReviewSerializer(serializers.ModelSerializer):
+    reviewer = serializers.SerializerMethodField()
+    doctor = serializers.SerializerMethodField()
+    
     class Meta:
         model = models.Review
         fields = '__all__'
+    
+    def get_reviewer(self, obj):
+        return f"{obj.reviewer.user.first_name} {obj.reviewer.user.last_name}"
+    
+    def get_doctor(self, obj):
+        return f"{obj.doctor.user.first_name} {obj.doctor.user.last_name}"
