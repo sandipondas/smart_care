@@ -102,4 +102,3 @@ class UserLogoutView(APIView):
             pass  # Token does not exist, nothing to delete
         logout(request)
         return redirect('login')
-
